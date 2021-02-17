@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <widget class="XVideoWidget" name="video">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>720</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="openFile">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>630</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>openFile</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="playPos">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>680</y>
+     <width>1271</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>999</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="playOrPause">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>630</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Play</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="audioVolume">
+   <property name="geometry">
+    <rect>
+     <x>1230</x>
+     <y>0</y>
+     <width>19</width>
+     <height>681</height>
+    </rect>
+   </property>
+   <property name="singleStep">
+    <number>10</number>
+   </property>
+   <property name="value">
+    <number>50</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <property name="tickInterval">
+    <number>10</number>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="playSpeed">
+   <property name="geometry">
+    <rect>
+     <x>1140</x>
+     <y>630</y>
+     <width>62</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="specialValueText">
+    <string/>
+   </property>
+   <property name="minimum">
+    <double>0.100000000000000</double>
+   </property>
+   <property name="maximum">
+    <double>3.000000000000000</double>
+   </property>
+   <property name="singleStep">
+    <double>0.500000000000000</double>
+   </property>
+   <property name="value">
+    <double>1.000000000000000</double>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>XVideoWidget</class>
+   <extends>QOpenGLWidget</extends>
+   <header location="global">xvideowidget.h</header>
+   <slots>
+    <slot>OpenFile()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>openFile</sender>
+   <signal>clicked()</signal>
+   <receiver>Widget</receiver>
+   <slot>OpenFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>169</x>
+     <y>638</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>234</x>
+     <y>735</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>playOrPause</sender>
+   <signal>clicked()</signal>
+   <receiver>Widget</receiver>
+   <slot>onPlayOrPauseClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>304</x>
+     <y>645</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>375</x>
+     <y>731</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>playPos</sender>
+   <signal>sliderPressed()</signal>
+   <receiver>Widget</receiver>
+   <slot>onSliderPressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>390</x>
+     <y>690</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>389</x>
+     <y>740</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>playPos</sender>
+   <signal>sliderReleased()</signal>
+   <receiver>Widget</receiver>
+   <slot>onSliderReleased()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>635</x>
+     <y>689</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>639</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>audioVolume</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Widget</receiver>
+   <slot>onVolumeChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1242</x>
+     <y>541</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1240</x>
+     <y>729</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>playSpeed</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>Widget</receiver>
+   <slot>onSpeedChanged(double)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1170</x>
+     <y>640</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1182</x>
+     <y>780</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>OpenFile()</slot>
+  <slot>onPlayOrPauseClicked()</slot>
+  <slot>onSliderPressed()</slot>
+  <slot>onSliderReleased()</slot>
+  <slot>onSpeedChanged(double)</slot>
+  <slot>onVolumeChanged(int)</slot>
+ </slots>
+</ui>
